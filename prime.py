@@ -7,10 +7,11 @@ def is_prime(number):
 
 
 def is_valid(number):
-    if number > 1:
-        return True
-    else:
-        return False
+    return True if number > 1 else False
+    # if number > 1:
+    #     return True
+    # else:
+    #     return False
 
 
 if __name__ == '__main__':
