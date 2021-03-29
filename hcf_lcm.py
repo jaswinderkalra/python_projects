@@ -5,32 +5,25 @@ class Factorise:
         self.number2 = n2
 
     def get_hcf(self):
-        if self.number1 > self.number2:
-            small = self.number2
-        else:
-            small = self.number1
-
+        big, small = self.get_big_small()
         for n in range(1, small + 1):
-            if ((self.number1 % n == 0) and (self.number2 % n == 0)):
+            if (self.number1 % n == 0) and (self.number2 % n == 0):
                 hcf = n
         return hcf
 
     def get_lcm(self):
-        if self.number1 > self.number2:
-            greater = self.number1
-        else:
-            greater = self.number2
-
-        while (True):
-            if ((greater % self.number1 == 0) and (greater % self.number2 == 0)):
-                lcm = greater
+        big, small = self.get_big_small()
+        while True:
+            if (big % self.number1 == 0) and (big % self.number2 == 0):
+                lcm = big
                 break
-            greater += 1
+            big += 1
         return lcm
+
+    def get_big_small(self):
+        return max(self.number1, self.number2), min(self.number1, self.number2)
 
 
 if __name__ == '__main__':
-    # print(get_hcf(5, 12))
-    # print(get_lcm(5, 12))
-    f = Factorise(9,12)
-    print(f.get_lcm()," ",f.get_hcf())
+    f = Factorise(9, 12)
+    print("lcm: ",f.get_lcm(), " hcf: ", f.get_hcf())
